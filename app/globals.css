@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-border: #e2e8f0;
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-light: #eef2ff;
+  --sidebar: linear-gradient(180deg, #4f46e5 0%, #4338ca 50%, #3730a3 100%);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --shadow-card: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.04);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.06), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+  --radius-card: 4px;
+  --radius-button: 0.75rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a;
+    --foreground: #f1f5f9;
+    --card: #1e293b;
+    --card-border: #334155;
+    --primary-light: rgba(79, 70, 229, 0.12);
+    --muted: #94a3b8;
+    --shadow-subtle: 0 1px 3px rgb(0 0 0 / 0.15);
+    --shadow-card: 0 1px 3px rgb(0 0 0 / 0.2);
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-urbanist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-urbanist), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus visible pour accessibilité */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Utilitaires design */
+.animate-in {
+  animation: animate-in 0.35s ease-out forwards;
+}
+
+.animate-in-modal {
+  animation: animate-in-modal 0.25s ease-out forwards;
+}
+
+@keyframes animate-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes animate-in-modal {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animations arrière-plan login */
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(8px, -12px) rotate(2deg);
+  }
+  50% {
+    transform: translate(-6px, 8px) rotate(-1deg);
+  }
+  75% {
+    transform: translate(10px, 4px) rotate(1deg);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-15px) scale(1.02);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes drift {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(20px, -10px);
+  }
+  66% {
+    transform: translate(-15px, 15px);
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
