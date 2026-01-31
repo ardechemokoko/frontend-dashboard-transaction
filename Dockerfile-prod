@@ -1,0 +1,34 @@
+# Utiliser Node officiel
+FROM node:22.14.0
+
+# Variables d'environnement par défaut
+ENV HOST='0.0.0.0'
+ENV PORT='3000'
+
+# Build arguments pour les variables d'environnement au build time
+ARG NEXT_PUBLIC_API_URL=http://localhost:8000/api
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+
+# Répertoire de travail
+WORKDIR /app
+
+# Copier seulement package.json (pas de yarn.lock)
+COPY package.json ./
+
+# Installer les dépendances avec npm
+RUN npm install --legacy-peer-deps
+# Installer react-is explicitement pour Recharts
+RUN npm install react-is
+
+# Copier le reste du projet
+COPY . .
+
+# Builder l'application pour la production
+# Les variables NEXT_PUBLIC_* seront injectées au build time
+RUN npm run build
+
+# Exposer le port
+EXPOSE 3000
+
+# Lancer l'application
+CMD ["npm", "run", "start"]

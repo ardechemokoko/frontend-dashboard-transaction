@@ -1,0 +1,22 @@
+FROM node:22.14.0
+
+# Variables d'environnement par défaut
+ENV HOST='0.0.0.0'
+ENV PORT='3000'
+
+# Build arguments pour les variables d'environnement au build time
+# En développement, ces variables peuvent être surchargées au runtime
+ARG NEXT_PUBLIC_API_URL=http://localhost:8000/api
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+
+WORKDIR /app
+
+COPY . .
+
+RUN yarn install --legacy-peer-deps
+# RUN yarn build
+# RUN yarn build
+
+EXPOSE 3000
+
+CMD [ "yarn", "dev" ]
