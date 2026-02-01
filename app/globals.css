@@ -54,7 +54,7 @@ body {
   outline-offset: 2px;
 }
 
-/* Utilitaires design */
+/* Utilitaires design  ok*/
 .animate-in {
   animation: animate-in 0.35s ease-out forwards;
 }
