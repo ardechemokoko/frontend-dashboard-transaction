@@ -6,7 +6,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { AUTH_TOKEN_KEY, getCurrentUser, type User } from "@/lib/api";
 import ActionButton from "@/components/ui/ActionButton";
 
-const navItems = [
+const ALL_NAV_ITEMS = [
   {
     href: "/dashboard",
     label: "Tableau de bord",
@@ -53,6 +53,16 @@ const navItems = [
     ),
   },
 ];
+
+/** Pour ROLE_AGENT : uniquement dashboard et transactions. */
+function getNavItemsForRole(role: string | undefined): typeof ALL_NAV_ITEMS {
+  if (role === "ROLE_AGENT") {
+    return ALL_NAV_ITEMS.filter(
+      (item) => item.href === "/dashboard" || item.href === "/dashboard/transactions"
+    );
+  }
+  return ALL_NAV_ITEMS;
+}
 
 export default function DashboardLayout({
   children,
@@ -169,7 +179,7 @@ export default function DashboardLayout({
           </button>
         </div>
         <nav className="flex-1 p-3 space-y-0.5 overflow-y-auto">
-          {navItems.map((item) => {
+          {getNavItemsForRole(user?.role).map((item) => {
             const isActive = pathname === item.href;
             return (
               <Link

@@ -113,9 +113,9 @@ export default function HomePage() {
                 Plateforme opérationnelle
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white tracking-tight leading-[1.1]">
-                Gérez vos{" "}
+                Suivez vos données sur les{" "}
                 <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
-                  transactions
+                  différentes transactions
                 </span>{" "}
                 en toute simplicité
               </h1>
@@ -216,7 +216,7 @@ export default function HomePage() {
               Fonctionnalités clés
             </h2>
             <p className="mt-3 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-              Une solution complète pour gérer vos flux de paiements mobiles
+              Une solution complète pour suivre vos données sur les différentes transactions
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -248,7 +248,7 @@ export default function HomePage() {
                 Prêt à commencer ?
               </h2>
               <p className="text-indigo-100 max-w-xl mx-auto mb-8">
-                Connectez-vous à votre espace et gérez vos transactions dès maintenant.
+                Connectez-vous à votre espace et suivez vos données sur les différentes transactions dès maintenant.
               </p>
               <Link
                 href="/login"
